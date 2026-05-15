@@ -1,0 +1,5 @@
+.claude/
+unidentified_logs/
+logs/
+__pycache__/
+*.pyc
