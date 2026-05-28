@@ -93,7 +93,7 @@ with tab_home:
                     color, label = (0, 255, 0), f"{name} ({conf:.1f}%)"
                     if name not in already_logged or (time.time() - already_logged[name] > 300):
                         already_logged[name] = time.time()
-                        st.toast(f"Attendance recorded for {name}")
+                        st.toast(f"Valid Student: {name}")
                         notification_placeholder.empty() 
                 else:
                     color, label = (255, 0, 0), "UNKNOWN ALERT"
