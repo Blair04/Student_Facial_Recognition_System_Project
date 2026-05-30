@@ -28,10 +28,16 @@ def load_trained_model():
     if os.path.exists('student_model.pkl'):
         with open('student_model.pkl', 'rb') as f:
             loaded = pickle.load(f)
-        if len(loaded) == 3:
-            return loaded
-        clf, out_encoder = loaded
-        return clf, out_encoder, None
+        
+        # Check if the loaded data is a tuple/list and check its length safely
+        if isinstance(loaded, (tuple, list)):
+            if len(loaded) == 3:
+                return loaded[0], loaded[1], loaded[2]
+            elif len(loaded) == 2:
+                return loaded[0], loaded[1], None
+                
+        # If it's a standalone object (or unexpected format)
+        return loaded, None, None
     return None, None, None
 
 st.title("Student Facial Recognition System")
